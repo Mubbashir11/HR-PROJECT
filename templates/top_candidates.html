@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Candidates</title>
+</head>
+<body>
+    <h1>Fetch Top Candidates</h1>
+    <form method="POST" action="/fetch_candidates">
+        <label for="job_description">Enter Job Description:</label><br>
+        <textarea id="job_description" name="job_description" rows="5" cols="50"></textarea><br><br>
+        <input type="submit" value="Fetch Candidates">
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

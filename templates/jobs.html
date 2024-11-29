@@ -1,0 +1,12 @@
+<ul>
+    {% for job in jobs %}
+    <li>
+        <h2>{{ job.job_title }} at {{ job.company_name }}</h2>
+        <p>{{ job.job_description }}</p>
+        <!-- Make sure the link generation is conditional on the presence of job.id -->
+        {% if job.id %}
+        <a href="{{ url_for('job_details', job_id=job.id) }}" target="_blank">View Details</a>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>

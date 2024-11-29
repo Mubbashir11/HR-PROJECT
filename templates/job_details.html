@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ job.job_title }} Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            text-align: center; /* Center the logo */
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 120px; /* Control the size of your logo */
+            height: auto;
+            margin-top: 10px;
+        }
+        div {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        h2 {
+            color: #0a347b;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        p {
+            margin: 12px 0;
+            font-size: 16px;
+            color: #444;
+        }
+        input[type="file"], button {
+            margin-top: 15px;
+            padding: 8px;
+            border-radius: 5px;
+            width: 100%;
+            display: block;
+        }
+        button {
+            background-color: #5c67f2;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4a54e1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='Artboard 1 copy 3.png') }}" alt="Company Logo">
+    </div> 
+    <div>
+        <h2>Job Details</h2>
+        <p><strong>Company:</strong> {{ job.company_name }}</p>
+        <p><strong>Title:</strong> {{ job.job_title }}</p>
+        <p><strong>Description:</strong> {{ job.job_description }}</p>
+        <p><strong>Sentiment Analysis:</strong> {{ job.sentiment_analysis }}</p>
+    </div>
+    <div>
+        <h2>Apply for this position:</h2>
+        <form action="{{ url_for('apply', job_id=job.id) }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="resume" required>
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</body>
+</html>

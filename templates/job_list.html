@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Job List</title>
+</head>
+<body>
+	<h1>Job List</h1>
+	<ul>
+		{% for job in jobs %}
+			<li><a href="{{ url_for('job_details', job_id=job['id']) }}">{{ job['job_title'] }}</a></li>
+		{% endfor %}
+	</ul>
+</body>
+</html>
